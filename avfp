@@ -1,0 +1,22 @@
+#!/bin/bash
+# Wrapper script for fingerprint_api.py that suppresses all output except the JSON result
+
+dir_base=${AV_FINGERPRINTS_DIR:-"$PWD"}
+
+export LD_LIBRARY_PATH=${dir_base}/libs
+DB_PATH=${dir_base}/fingerprints.db
+
+# Create a temporary file to capture all output
+temp_file=$(mktemp)
+
+# Run the command and capture all output
+python3 fingerprint_api.py --db-path "${DB_PATH}" "$@" > "$temp_file" 2>&1
+rc=$?
+
+# Extract only valid JSON from the output (find the first { and print from there)
+sed -n '/^{/,$p' "$temp_file" | grep -v "Algorithm Version:"
+
+# Clean up
+rm "$temp_file"
+
+exit $rc

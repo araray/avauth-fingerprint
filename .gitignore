@@ -7,6 +7,7 @@ __pycache__/
 *.so
 
 # testing/dev artifacts and other uninmportant stuff
+CLAUDE.md
 src
 old-docs/
 .localflow/

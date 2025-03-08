@@ -30,12 +30,12 @@ Author: Araray
 Date: 2025-03-02
 """
 
-import os
-import sys
 import time
 import sqlite3
 import logging
 import click
+import ctypes
+
 from typing import Optional, Tuple, List, Dict, Any
 
 # Import the ZKFinger module

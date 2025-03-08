@@ -46,7 +46,6 @@ import platform
 import threading
 import time
 import logging
-from typing import Tuple, Optional, List, Any, Dict
 
 
 # Set up logging
