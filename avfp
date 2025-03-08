@@ -15,6 +15,7 @@ rc=$?
 
 # Extract only valid JSON from the output (find the first { and print from there)
 sed -n '/^{/,$p' "$temp_file" | grep -v "Algorithm Version:"
+#cat "$temp_file"
 
 # Clean up
 rm "$temp_file"
